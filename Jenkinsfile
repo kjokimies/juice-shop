@@ -15,11 +15,11 @@ node {
 }
     stage('sonarqubeScanner') {
     // requires SonarQube Scanner 2.8+
-    def scannerHome = tool 'SonarQube Scanner 3.2.0.1227';
+    def scannerHome = tool 'sonarqubeScanner';
     withSonarQubeEnv('sonarqubeServer') {
       sh "${scannerHome}/bin/sonar-scanner sonar-scanner \
          -Dsonar.projectKey=A12 \
-         -Dsonar.sources=. \
+         -Dsonar.sources=./routes \
          -Dsonar.host.url=http://10.48.253.181:9000 \
          -Dsonar.login=7b28fe83f6341ec39a41410ba1189192b32dfb0e"
     }
