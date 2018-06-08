@@ -1,9 +1,8 @@
 node {
     stage('Clone Repository') {
         checkout scm
-    }     
-}
-stage('Dependency Check') {
+    } 
+    stage('Dependency Check') {
       environment {
           analyzer.bundle.audit.enabled=false
       } 
@@ -14,3 +13,5 @@ stage('Dependency Check') {
       archiveArtifacts allowEmptyArchive: true, artifacts: '**/dependency-check-report.*', onlyIfSuccessful: true
       step([$class: 'DependencyCheckPublisher', unstableTotalAll: '0'])
 }
+}
+
