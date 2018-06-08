@@ -13,5 +13,16 @@ node {
       archiveArtifacts allowEmptyArchive: true, artifacts: '**/dependency-check-report.*', onlyIfSuccessful: true
       step([$class: 'DependencyCheckPublisher', unstableTotalAll: '0'])
 }
+    stage('sonarqubeScanner') {
+    // requires SonarQube Scanner 2.8+
+    def scannerHome = tool 'sonarqubeScanner 2.8';
+    withSonarQubeEnv('sonarqubeServer') {
+      sh "${scannerHome}/bin/sonar-scanner sonar-scanner \
+         -Dsonar.projectKey=A12 \
+         -Dsonar.sources=. \
+         -Dsonar.host.url=http://10.48.253.181:9000 \
+         -Dsonar.login=7b28fe83f6341ec39a41410ba1189192b32dfb0e"
+    }
+  }
 }
 
