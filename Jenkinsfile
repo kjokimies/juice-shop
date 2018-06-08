@@ -15,7 +15,7 @@ node {
 }
     stage('sonarqubeScanner') {
     // requires SonarQube Scanner 2.8+
-    def scannerHome = tool 'sonarqubeScanner 2.8';
+    def scannerHome = tool 'SonarQube Scanner 3.2.0.1227';
     withSonarQubeEnv('sonarqubeServer') {
       sh "${scannerHome}/bin/sonar-scanner sonar-scanner \
          -Dsonar.projectKey=A12 \
