@@ -17,7 +17,7 @@ node {
     // requires SonarQube Scanner 2.8+
     def scannerHome = tool 'sonarqubeScanner';
     withSonarQubeEnv('sonarqubeServer') {
-      sh "${scannerHome}/bin/sonar-scanner sonar-scanner \
+      sh "${scannerHome}/bin/sonar-scanner \
          -Dsonar.projectKey=A12 \
          -Dsonar.sources=./routes \
          -Dsonar.host.url=http://10.48.253.181:9000 \
